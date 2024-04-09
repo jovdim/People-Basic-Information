@@ -1,7 +1,7 @@
 import "./App.css";
 import Person from "./components/Person";
 import { Profiler, useState } from "react";
-
+import AddnewPerson from "./components/AddnewPerson.js";
 function App() {
   const [profiles, setProfiles] = useState([
     {
@@ -209,8 +209,10 @@ function App() {
               img={profile.image}
               modifyInfo={modifyInfo}
             />
+            
           );
         })}
+        <AddnewPerson/>
       </div>
     </>
   );

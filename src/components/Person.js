@@ -25,6 +25,7 @@ function Person(props) {
         />
       </div>
     </div>
+    
   );
 }
 
