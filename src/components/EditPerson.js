@@ -13,14 +13,26 @@ function EditPerson(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const handleRemove = () => {
+    handleClose();
+    props.removePerson(props.id);
+  };
+
   return (
     <>
       <button
         onClick={handleShow}
-        className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+        className="px-4 py-1 text-sm text-rose-400 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-rose-400 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
       >
         edit
       </button>
+      <button
+        onClick={handleRemove}
+        className="ml-4 px-4 py-1 text-sm text-red-400 font-semibold rounded-full border border-red-400 hover:text-white hover:bg-red-400 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+      >
+        Remove
+      </button>
+
       <Modal
         show={show}
         onHide={handleClose}
@@ -36,8 +48,7 @@ function EditPerson(props) {
             onSubmit={(e) => {
               handleClose();
               e.preventDefault();
-              console.log("NICE");
-              console.log(props.id, name, position );
+
               props.modifyInfo(props.id, name, position, age, location);
             }}
             className="w-full max-w-sm"
@@ -134,7 +145,7 @@ function EditPerson(props) {
           </Button>
 
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-rose-500 hover:bg-rose-600  text-white font-bold py-2 px-4 rounded"
             form="editmodal"
           >
             confirm

@@ -124,59 +124,13 @@ function App() {
       position: "Business Development Manager",
       image: "https://randomuser.me/api/portraits/women/15.jpg",
     },
-    {
-      id: 16,
-      name: "Alexander Martinez",
-      age: 38,
-      location: "Tokyo, Japan",
-      position: "Financial Advisor",
-      image: "https://randomuser.me/api/portraits/men/16.jpg",
-    },
-    {
-      id: 17,
-      name: "Sophie Brown",
-      age: 25,
-      location: "Singapore",
-      position: "Marketing Manager",
-      image: "https://randomuser.me/api/portraits/women/17.jpg",
-    },
-    {
-      id: 18,
-      name: "Jackson Rodriguez",
-      age: 40,
-      location: "Buenos Aires, Argentina",
-      position: "Civil Engineer",
-      image: "https://randomuser.me/api/portraits/men/18.jpg",
-    },
-    {
-      id: 19,
-      name: "Lily Harris",
-      age: 26,
-      location: "Toronto, Canada",
-      position: "Social Media Manager",
-      image: "https://randomuser.me/api/portraits/women/19.jpg",
-    },
-    {
-      id: 20,
-      name: "Logan Wilson",
-      age: 33,
-      location: "New York City, USA",
-      position: "Operations Director",
-      image: "https://randomuser.me/api/portraits/men/20.jpg",
-    },
-    {
-      id: 21,
-      name: "Grace Wilson",
-      age: 29,
-      location: "San Francisco, USA",
-      position: "Data Scientist",
-      image: "https://randomuser.me/api/portraits/women/21.jpg",
-    },
+
+   
   ]);
 
   function modifyInfo(id, newName, newPosition, newAge, newLocation) {
     {
-     const modifiedInfo =  profiles.map((profile) => {
+      const modifiedInfo = profiles.map((profile) => {
         if (profile.id === id) {
           return {
             ...profile,
@@ -188,15 +142,34 @@ function App() {
         }
         return profile;
       });
-      setProfiles(modifiedInfo)
+      setProfiles(modifiedInfo);
     }
+  }
+
+  function addNew(name, position, age, location) {
+    const newProfile = {
+      id: profiles.length + 1,
+      name,
+      position,
+      age,
+      location,
+      image: `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'women' : 'men'}/${Math.floor(Math.random() * 100)}.jpg`
+    };
+    
+    const updatedProfiles = [...profiles, newProfile];
+    setProfiles(updatedProfiles);
+
+  }
+  
+  function removePerson(id) {
+    setProfiles(profiles.filter(profile => profile.id !== id));
   }
   return (
     <>
       <h1 className="text-center text-4xl font-bold m-8">
         People Basic Information
       </h1>
-      <div className="flex flex-wrap justify-center">
+      <div className="mb-8  flex flex-wrap justify-center">
         {profiles.map((profile) => {
           return (
             <Person
@@ -208,12 +181,15 @@ function App() {
               location={profile.location}
               img={profile.image}
               modifyInfo={modifyInfo}
+              removePerson={removePerson}
+              
+           
             />
-            
           );
         })}
-        <AddnewPerson/>
+    
       </div>
+          <AddnewPerson addNew={addNew} />
     </>
   );
 }

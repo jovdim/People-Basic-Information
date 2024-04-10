@@ -16,16 +16,16 @@ function Person(props) {
           <p className="text-slate-400 font-medium">{props.location}</p>
         </div>
         <EditPerson
-        id={props.id}
+          id={props.id}
           name={props.name}
           age={props.age}
           position={props.position}
           location={props.location}
           modifyInfo={props.modifyInfo}
+          removePerson={props.removePerson}
         />
       </div>
     </div>
-    
   );
 }
 
