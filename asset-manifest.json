@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/People-Basic-Information/static/css/main.616d642f.css",
+    "main.js": "/People-Basic-Information/static/js/main.1967d063.js",
+    "index.html": "/People-Basic-Information/index.html",
+    "main.616d642f.css.map": "/People-Basic-Information/static/css/main.616d642f.css.map",
+    "main.1967d063.js.map": "/People-Basic-Information/static/js/main.1967d063.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.616d642f.css",
+    "static/js/main.1967d063.js"
+  ]
+}
